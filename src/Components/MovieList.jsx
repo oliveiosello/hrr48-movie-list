@@ -2,6 +2,7 @@
 // export movie list (& import in App)
 import React, { Component } from 'react';
 import MovieRow from './MovieRow.jsx';
+import MovieInfo from './MovieInfo.jsx';
 
 
 class MovieList extends Component {
@@ -10,18 +11,18 @@ class MovieList extends Component {
 
         this.state = {
             movies: initialMovies,
-            movie: {},
+            movie: null,
             query: '',
-            suggestion: ''
+            suggestion: '',
+            showSeen: false
         }
     }
 
     render() {
-        console.log(this.state)
-        const {suggestion, query, movies} = this.state
+        const {suggestion, query, movies, movie} = this.state
         const searchedMovies = movies.filter(movie => {
             return movie.title.toLowerCase().includes(query.toLowerCase());
-        })
+        }).filter(movie => !!movie.watched === this.state.showSeen)
 
         return (
             <div>
@@ -30,6 +31,8 @@ class MovieList extends Component {
                     onChange={(e) => this.setState({suggestion: e.target.value})}/>
                 <input type="text" value={query} 
                     onChange={this.movieFilterOnChange.bind(this)}/>
+                <button title="left-button" onClick={() => this.setState({showSeen: true})}>seen</button>
+                <button title="right-button" onClick={() => this.setState({showSeen: false})}>unseen</button>
                 <button onClick={this.addSuggestion.bind(this)}>add</button>
                 <div className="movie-list">
                     {searchedMovies.length === 0 && 'watch more movies!'}
@@ -38,8 +41,14 @@ class MovieList extends Component {
                     title={movie.title} 
                     watched={movie.watched}
                     onToggle={() => this.toggleMovie(movie.title)}
+                    onClick={() => this.setState({movie: movie})}
                     />
                     )}
+                </div>
+                <div className="movie-info">
+                    {movie && 
+                    <MovieInfo title={movie.title} 
+                    watched={movies.find(m => m.title === movie.title).watched}/>}
                 </div>
             </div>
         )
@@ -60,6 +69,7 @@ class MovieList extends Component {
             movies: newMovies
         })
     }
+
 
     toggleMovie(title) {
         const newMovies = 
