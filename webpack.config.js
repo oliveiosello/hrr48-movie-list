@@ -15,3 +15,8 @@ module.exports = {
     ]
   }
 };
+
+// collects all JS from entry (collected into index.js)
+// traverses tree of code within entry file
+// bundles everything into single JS file
+// processes information with rules

@@ -10,17 +10,17 @@
     "build": "webpack -d --watch"
   },
   "dependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-react": "^7.8.3",
-    "babel-loader": "^8.0.6",
-    "jquery": "^2.2.1",
+    "@babel/core": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "jquery": "^3.5.1",
     "live-server": "^1.2.1",
-    "lodash": "^4.6.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "underscore": "^1.8.3",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "lodash": "^4.17.20",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "underscore": "^1.11.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   }
 }
