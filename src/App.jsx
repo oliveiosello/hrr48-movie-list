@@ -7,7 +7,7 @@ import MovieList from './Components/MovieList.jsx';
 
 const App = () => {
   return (
-    <div className="header">
+    <div className="pageTitle">
       <h1>Olive's Favorite Movies</h1>
     </div>
     <div>

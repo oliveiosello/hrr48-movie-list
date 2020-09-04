@@ -52,12 +52,16 @@ class MovieInfo extends Component {
         border: '2px solid orange'
     }
     return (
-      <div>
+      <div className="movie-info">
+        <div className="title">
         {title}
+        </div>
+      <div className="copy">
         <div className="overview">Overview: {overview || "Loading..."}</div>
         <div className="release-date">Release: Date {releaseDate}</div>
         <div className="rating">Rating: {rating}</div>
         <button style={buttonStyle} onClick={onToggle}>seen</button>
+      </div>
       </div>
     );
   }

@@ -46,7 +46,7 @@ class MovieList extends Component {
           <button onClick={this.addSuggestion.bind(this)}>suggest</button>
         </div>
 
-        <div>
+        <div className="seen-filter">
           <button
             title="left-button"
             onClick={() => this.setState({ showSeen: true })}
@@ -73,7 +73,7 @@ class MovieList extends Component {
           ))}
         </div>
 
-        <div className="movie-info">
+        <div>
           {movie && (
             <MovieInfo
               title={movie.title}
