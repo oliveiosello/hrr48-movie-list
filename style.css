@@ -1,3 +1,60 @@
 body {
-  font-family: sans-serif, arial;
+  background: #FFF3E0;
 }
+
+.pageTitle {
+  font-family: palatino;
+  color: #EF6C00;
+  align-content: flex;
+}
+
+.search {
+  color: #FFCC80;
+  align-items: flex;
+};
+
+.suggest {
+
+};
+
+.seen-filter {
+
+};
+
+.movie-list {
+
+};
+
+.movie-info {
+
+};
+
+.title {
+  font-family: arial;
+  font-size: 10px;
+  color: #FFCDD2
+};
+
+.copy {
+  font-family: arial;
+  font-size: 10px;
+  color: #FFCDD2
+};
+
+.overview {
+  font-family: arial;
+  font-size: 10px;
+  color: #FFCDD2
+};
+
+.release-date {
+  font-family: arial;
+  font-size: 10px;
+  color: #FFCDD2
+};
+
+.rating {
+  font-family: arial;
+  font-size: 10px;
+  color: #FFCDD2
+};

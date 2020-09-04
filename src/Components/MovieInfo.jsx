@@ -49,7 +49,7 @@ class MovieInfo extends Component {
     const { onToggle, watched, title} = this.props
     const buttonStyle = {
         background: watched ? 'orange' : 'white',
-        border: '1px solid orange'
+        border: '2px solid orange'
     }
     return (
       <div>

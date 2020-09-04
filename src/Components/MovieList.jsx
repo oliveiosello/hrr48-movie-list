@@ -28,26 +28,41 @@ class MovieList extends Component {
 
     return (
       <div>
-        <label htmlFor="search">See If We Have Any In Common </label>
-        <input
-          type="text"
-          value={suggestion}
-          onChange={(e) => this.setState({ suggestion: e.target.value })}
-        />
-        <input
-          type="text"
-          value={query}
-          onChange={this.movieFilterOnChange.bind(this)}
-        />
-        <button
-          title="left-button"
-          onClick={() => this.setState({ showSeen: true })}
-        > seen </button>
-        <button
-          title="right-button"
-          onClick={() => this.setState({ showSeen: false })}
-        > unseen </button>
-        <button onClick={this.addSuggestion.bind(this)}>add</button>
+        <div className="search">
+          <label htmlFor="search">See If We Have Any In Common </label>
+          <input
+            type="text"
+            value={query}
+            onChange={this.movieFilterOnChange.bind(this)}
+          />
+        </div>
+
+        <div className="suggest">
+          <input
+            type="text"
+            value={suggestion}
+            onChange={(e) => this.setState({ suggestion: e.target.value })}
+          />
+          <button onClick={this.addSuggestion.bind(this)}>suggest</button>
+        </div>
+
+        <div>
+          <button
+            title="left-button"
+            onClick={() => this.setState({ showSeen: true })}
+          >
+            {' '}
+            seen{' '}
+          </button>
+          <button
+            title="right-button"
+            onClick={() => this.setState({ showSeen: false })}
+          >
+            {' '}
+            unseen{' '}
+          </button>
+        </div>
+
         <div className="movie-list">
           {searchedMovies.length === 0 && 'watch more movies!'}
           {searchedMovies.map((movie) => (
@@ -57,6 +72,7 @@ class MovieList extends Component {
             />
           ))}
         </div>
+
         <div className="movie-info">
           {movie && (
             <MovieInfo
