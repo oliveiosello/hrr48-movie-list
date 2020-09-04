@@ -1,35 +1,66 @@
 import React, { Component } from 'react';
 
+const getMovieData = (title, onSuccess) => {
+  const apiKey = 'api key goes here';
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${title}&page=1`;
 
+  $.get(url, (response) => {
+    const movie = response.results[0];
+    onSuccess(movie);
+  });
+};
 
 class MovieInfo extends Component {
   constructor(props) {
-      super(props);
+    super(props);
 
-      this.state = {
-        
-      }
+    this.state = {};
   }
 
   componentDidMount() {
-
+    this.getMovieInfo();
   }
 
-  componentDidUpdate() {
-      
+  componentDidUpdate(oldProps) {
+    if (this.props.title !== oldProps.title) {
+      this.getMovieInfo();
+    }
   }
 
   getMovieInfo() {
+    console.log('getting movie info');
 
+    this.setState({
+        overview: null,
+        releaseDate: null
+    })
+
+    getMovieData(this.props.title, (movie) => {
+      this.setState({
+        rating: movie.popularity,
+        overview: movie.overview,
+        releaseDate: movie.release_date,
+      });
+    });
   }
 
   render() {
-    return <div>
-        {this.props.title}
-  <div className="status">{this.props.watched ? 'watched' : 'notwatched'}</div>
-        </div>
+    const { rating, overview, releaseDate } = this.state;
+    const { onToggle, watched, title} = this.props
+    const buttonStyle = {
+        background: watched ? 'orange' : 'white',
+        border: '1px solid orange'
+    }
+    return (
+      <div>
+        {title}
+        <div className="overview">Overview: {overview || "Loading..."}</div>
+        <div className="release-date">Release: Date {releaseDate}</div>
+        <div className="rating">Rating: {rating}</div>
+        <button style={buttonStyle} onClick={onToggle}>seen</button>
+      </div>
+    );
   }
 }
-
 
 export default MovieInfo;
